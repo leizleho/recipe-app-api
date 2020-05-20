@@ -16,7 +16,7 @@ class PublicTagsApiTests(TestCase):
     """Test the publicly available tags API"""
 
     def setUp(self):
-        self.client = APIClient
+        self.client = APIClient()
 
     def test_login_required(self):
         """Test that login is required for retrieving tags"""
@@ -49,7 +49,6 @@ class PrivateTagsApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
-
 
     def test_tags_limited_to_user(self):
         """Test that tags returned are for the authenticated user"""
